@@ -19,6 +19,7 @@ list.addEventListener("click", (e) => {
 
 addBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  if (!addInput.value) return;
   list.appendChild(createItem(addInput.value));
   addInput.value = "";
   if (list.querySelector("#emMsg")) {
