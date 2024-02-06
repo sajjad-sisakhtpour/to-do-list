@@ -12,7 +12,31 @@ list.addEventListener("click", (e) => {
     eMsg.innerText = "your list is empty";
     eMsg.style.color = "#333";
     eMsg.id = "emMsg";
-    eMsg.style.textAlign='center'
+    eMsg.style.textAlign = "center";
     list.appendChild(eMsg);
   }
 });
+
+addBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  list.appendChild(createItem(addInput.value));
+  addInput.value = "";
+  if (list.querySelector("#emMsg")) {
+    list.querySelector("#emMsg").remove();
+  }
+});
+
+function createItem(itemValue) {
+  let item = document.createElement("li");
+  let title = document.createElement("span");
+  let btn = document.createElement("span");
+
+  item.className = "to-do-item";
+  title.className = "title";
+  title.innerText = itemValue;
+  btn.className = "delete-btn";
+  btn.innerText = "delete";
+  item.appendChild(title);
+  item.appendChild(btn);
+  return item;
+}
