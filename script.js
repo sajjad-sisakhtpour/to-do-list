@@ -40,3 +40,18 @@ function createItem(itemValue) {
   item.appendChild(btn);
   return item;
 }
+
+searchInput.addEventListener("input", (e) => {
+  if (list.querySelector("#emMsg")) return;
+  Array.from(list.children).forEach((Element) => {
+    if (
+      Element.querySelector(".title")
+        .innerText.toLowerCase()
+        .includes(e.target.value.toLowerCase())
+    ) {
+      Element.style.display = "flex";
+    } else {
+      Element.style.display = "none";
+    }
+  });
+});
